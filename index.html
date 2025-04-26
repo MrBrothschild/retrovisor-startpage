@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retrovisor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+            color: #00FFF7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: 
+                linear-gradient(0deg, transparent 0%, #000000 90%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0%,
+                    transparent 1px,
+                    #5A00FF 1px,
+                    #5A00FF 2px
+                );
+            background-size: 100% 100%, 100% 4px;
+            overflow: hidden;
+        }
+
+        .sun {
+            width: 200px;
+            height: 200px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQBAMAAABykSv/AAAAwHpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjabVDbEQMhCPynipQgDzksx8uZmXSQ8oOHZs4kO+MusooItNfzAbcOQgHJm2lRTQ4pUqh6YClQT8YkJ58oM8I1Dx+DXNmVwzANxZkfF6Zi9ShfCtl9GPtqFAkl+ypEIdw76vExOxqFmMLAUaDGt5IW265f2FtaYbGgk9ja9s9+8+kd2d9hosbIyZlZowHuKwNXD8SZWP1gT1bfB89OfCD/5jQBb/DnWR8OLtJzAAABhGlDQ1BJQ0MgcHJvZmlsZQAAeJx9kT1Iw0AcxV/TSkUqDnaQ4pChCoJdVEQ3qWIRLJS2QqsOJpd+QZOGJMXFUXAtOPixWHVwcdbVwVUQBD9A3AUnRRcp8X9JoUWMB8f9eHfvcfcOEJpVppqBOUDVLCOdiIu5/KoYfEUAEQBjmJWYqSczi1l4jq97+Ph6F+NZ3uf+HP1KwWSATySeY7phEW8QT29aOud94jArSwrxOfG4QRckfuS67PIb55LDAs8MG9n0PHGYWCx1sdzFrGyoxFPEUUXVKF/Iuaxw3uKsVuusfU/+wlBBW8lwneYwElhCEimIkFFHBVVYiNGqkWIiTftxD3/E8afIJZOrAkaOBdSgQnL84H/wu1uzODnhJoXiQM+LbX+MAMFdoNWw7e9j226dAP5n4Err+GtNYOaT9EZHix4BA9vAxXVHk/eAyx1g6EmXDMmR/DSFYhF4P6NvygODt0Dfmttbex+nD0CWulq+AQ4OgdESZa97vLu3u7d/z7T7+wH/0XLfmkTj2wAADXZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDQuNC4wLUV4aXYyIj4KIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgIHhtbG5zOkdJTVA9Imh0dHA6Ly93d3cuZ2ltcC5vcmcveG1wLyIKICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICB4bXBNTTpEb2N1bWVudElEPSJnaW1wOmRvY2lkOmdpbXA6NzA1ZGY1MTYtN2NjMC00YmUwLWIyOTMtOTdiZDA2Zjg5ZjFlIgogICB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOmUwMTJiODlmLWEwYTMtNDk5NS1iYzE4LTI5YjYyNmIzN2FjYSIKICAgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjIzMWNhYTViLTJmNWMtNDI3Ny04ZjdjLTUwMzFkM2E5MmE1NiIKICAgZGM6Rm9ybWF0PSJpbWFnZS9wbmciCiAgIEdJTVA6QVBJPSIyLjAiCiAgIEdJTVA6UGxhdGZvcm09IldpbmRvd3MiCiAgIEdJTVA6VGltZVN0YW1wPSIxNzQ1NjI4MTY0MjUxMzk1IgogICBHSU1QOlZlcnNpb249IjIuMTAuMzYiCiAgIHRpZmY6T3JpZW50YXRpb249IjEiCiAgIHhtcDpDcmVhdG9yVG9vbD0iR0lNUCAyLjEwIgogICB4bXA6TWV0YWRhdGFEYXRlPSIyMDI1OjA0OjI2VDAyOjQyOjQ0KzAyOjAwIgogICB4bXA6TW9kaWZ5RGF0ZT0iMjAyNTowNDoyNlQwMjo0Mjo0NCswMjowMCI+CiAgIDx4bXBNTTpIaXN0b3J5PgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaQogICAgICBzdEV2dDphY3Rpb249InNhdmVkIgogICAgICBzdEV2dDpjaGFuZ2VkPSIvIgogICAgICBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjljNWFjMGUxLTRiOGItNGZiMy1iOTYxLTJlZTE1ZTM5OGI0NiIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iR2ltcCAyLjEwIChXaW5kb3dzKSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyNS0wNC0yNlQwMjo0Mjo0NCIvPgogICAgPC9yZGY6U2VxPgogICA8L3htcE1NOkhpc3Rvcnk+CiAgPC9yZGY6RGVzY3JpcHRpb24+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9InciPz4cAoOvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH6QQaACosaghRGgAAABhQTFRFAAAA4gC67ndx7yiP/cCJ/wAA/+uV//3xuaLiDwAAAAF0Uk5TAEDm2GYAAAABYktHRAX4b+nHAAABbUlEQVR42u3XWwGDQAxFwbUQC7WABbTUQu1jgUdZkjBHwZ3PO8afipONbIGAgICAgICAgICApIfETYGAgICAgICAgICAgMwaPh0GAgICAgICAgICAlIGEkkCAQEBAQEBAQEBAXkPJJIGAgICAgICAgICAtIXEkUCAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQG5ComigYCAgICAgICAgICAgICAgICAgICAgICAnIVIkiRJ0uyWJoGAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgGSHSJIkSdJTfZoEAgICAgICAgICAgICAgICAgICAgICAgKyFyJJkiRJT7cWDQQEBAQEBAQEBASkPqQaqM3BAgEBAQEBAQEBAQGRJEmSpDR9kwYCAgICAgICAgIC0h+SDdTmYIGAgICAgICAgICASJIkSVLZfjcFAgICAgICAgICAgIyC9bmaIGAgICAgICAgICAHG0DfRE18DuuYNwAAAAASUVORK5CYII=) no-repeat center;
+            mix-blend-mode: screen;
+            background-size: contain;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            background: linear-gradient(180deg, #00FFF7, #009DFF, #5A00FF, #A200FF, #FF2D95);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .url-bar {
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .url-input {
+            flex-grow: 1;
+            background: #000000;
+            border: 2px solid #5A00FF;
+            padding: 6px 12px;
+            color: #00FFF7;
+            font-size: 12px;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #FF2D95;
+            box-shadow: 0 0 15px #FF2D95;
+        }
+
+        .search-button {
+            background: #000000;
+            border: 2px solid #5A00FF;
+            padding: 6px 12px;
+            color: #00FFF7;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            border-color: #FF2D95;
+            box-shadow: 0 0 15px #FF2D95;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .quick-link {
+            background: #000000;
+            border: 2px solid #5A00FF;
+            padding: 6px;
+            color: #00FFF7;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .quick-link:hover {
+            border-color: #FF2D95;
+            box-shadow: 0 0 15px #FF2D95;
+            transform: translateY(-2px);
+        }
+
+        .empty-link {
+            border-style: dashed;
+            color: #5A00FF;
+            cursor: pointer;
+        }
+
+        .empty-link:hover {
+            border-color: #FF2D95;
+            box-shadow: 0 0 15px #FF2D95;
+            color: #FF2D95;
+        }
+
+        .edit-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .edit-form {
+            background: #000000;
+            border: 2px solid #5A00FF;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 300px;
+        }
+
+        .edit-form input {
+            background: #000000;
+            border: 2px solid #5A00FF;
+            padding: 6px 12px;
+            color: #00FFF7;
+            font-size: 12px;
+        }
+
+        .edit-form input:focus {
+            outline: none;
+            border-color: #FF2D95;
+        }
+
+        .edit-form button {
+            background: #000000;
+            border: 2px solid #5A00FF;
+            padding: 6px 12px;
+            color: #00FFF7;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .edit-form button:hover {
+            border-color: #FF2D95;
+            box-shadow: 0 0 15px #FF2D95;
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <h1>RETROVISOR</h1>
+    <div class="url-bar">
+        <input type="text" class="url-input" placeholder="Search or enter URL...">
+        <button class="search-button" onclick="search()">GO</button>
+    </div>
+    <div class="quick-links" id="quickLinksContainer">
+        <!-- Empty boxes will be generated here -->
+    </div>
+    <div class="edit-overlay">
+        <div class="edit-form">
+            <input type="text" id="linkUrl" placeholder="Enter URL...">
+            <input type="text" id="linkText" placeholder="Link name...">
+            <button onclick="saveLink()">Save</button>
+            <button onclick="closeEditForm()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Number of link boxes (6x10 grid)
+        const TOTAL_LINKS = 60;
+        let currentEditIndex = null;
+
+        // Load links from localStorage or create empty array
+        function loadLinks() {
+            const savedLinks = localStorage.getItem('quickLinks');
+            let links = [];
+            
+            if (savedLinks) {
+                try {
+                    links = JSON.parse(savedLinks);
+                } catch (e) {
+                    console.error('Error parsing saved links', e);
+                }
+            }
+            
+            // Ensure we have exactly 60 links (add empty if needed)
+            while (links.length < TOTAL_LINKS) {
+                links.push({ url: "", text: "" });
+            }
+            
+            return links.slice(0, TOTAL_LINKS);
+        }
+
+        // Save links to localStorage
+        function saveLinks(links) {
+            localStorage.setItem('quickLinks', JSON.stringify(links));
+        }
+
+        // Render empty link boxes
+        function renderLinks() {
+            const container = document.getElementById('quickLinksContainer');
+            container.innerHTML = '';
+            
+            const links = loadLinks();
+            
+            links.forEach((link, index) => {
+                if (link.url && link.text) {
+                    // If link exists (added by user)
+                    const linkElement = document.createElement('a');
+                    linkElement.href = link.url.startsWith('http') ? link.url : 'https://' + link.url;
+                    linkElement.className = 'quick-link';
+                    linkElement.textContent = link.text;
+                    linkElement.target = "_blank";
+                    linkElement.rel = "noopener noreferrer";
+                    linkElement.onclick = function(e) {
+                        if (e.ctrlKey || e.metaKey) {
+                            e.preventDefault();
+                            showEditForm(index);
+                        }
+                    };
+                    container.appendChild(linkElement);
+                } else {
+                    // Empty link box
+                    const emptyLink = document.createElement('div');
+                    emptyLink.className = 'quick-link empty-link';
+                    emptyLink.textContent = '+';
+                    emptyLink.onclick = function() {
+                        showEditForm(index);
+                    };
+                    container.appendChild(emptyLink);
+                }
+            });
+        }
+
+        // Search function (opens in new tab)
+        function search() {
+            const input = document.querySelector('.url-input');
+            const query = input.value.trim();
+            
+            if (query.startsWith('http://') || query.startsWith('https://')) {
+                window.open(query, '_blank');
+            } else {
+                window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+            }
+        }
+
+        // Handle Enter key in search field
+        document.querySelector('.url-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                search();
+            }
+        });
+
+        // Show edit form
+        function showEditForm(index) {
+            currentEditIndex = index;
+            const links = loadLinks();
+            const link = links[index];
+            
+            document.getElementById('linkUrl').value = link.url || '';
+            document.getElementById('linkText').value = link.text || '';
+            document.querySelector('.edit-overlay').style.display = 'flex';
+        }
+
+        // Close edit form
+        function closeEditForm() {
+            document.querySelector('.edit-overlay').style.display = 'none';
+            document.getElementById('linkUrl').value = '';
+            document.getElementById('linkText').value = '';
+            currentEditIndex = null;
+        }
+
+        // Save link
+        function saveLink() {
+            const url = document.getElementById('linkUrl').value.trim();
+            const text = document.getElementById('linkText').value.trim();
+            
+            if (currentEditIndex !== null) {
+                const links = loadLinks();
+                links[currentEditIndex] = { url, text };
+                saveLinks(links);
+                renderLinks();
+                closeEditForm();
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderLinks();
+        });
+    </script>
+</body>
+</html>

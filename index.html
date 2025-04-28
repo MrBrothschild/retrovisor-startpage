@@ -4,62 +4,36 @@
     <meta charset="UTF-8">
     <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAFVBMVEUAAADiALrud3HvKI/9wIn/65X///8uCEC+AAAAAXRSTlMAQObYZgAAALtJREFUSMft1TEOwjAMBdDvUjrbN0CcAIkLMHCALOyduP8RmIiS1PGPRNUJr//pJ5MNHDxiZqZxHJCcd0SRu6LKPWHNsLwVsgVKCuoK8YCSgrJCfKCkoKhgQHpASUGuYED6QHcCZuQTPwOJgI6A0z2Y2x+MA0QAAHANZgxM/fyyEwD5wgCYyAvAszMYBrOfP0Aqii03kwK/otq059dmUr2st6Bd9yxvH0mIRfKO1vLOs/pnbyH5l6xHn/MP0pfIFkP+idkAAAAASUVORK5CYII=">
     <title>Retrovisor</title>
+    <title>Retrovisor</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        * {
-            font-family: 'Press Start 2P', monospace;
-        }
-
+        * { font-family: 'Press Start 2P', monospace; }
         body {
-            margin: 0;
-            padding: 20px;
-            background-color: #000000;
-            color: #00FFF7;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 0; padding: 20px; background-color: #000000; color: #00FFF7;
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center;
             background-image: 
                 linear-gradient(0deg, transparent 0%, #000000 90%),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent 0%,
-                    transparent 1px,
-                    #5A00FF 1px,
-                    #5A00FF 2px
-                );
+                repeating-linear-gradient(0deg, transparent 0%, transparent 1px, #5A00FF 1px, #5A00FF 2px);
             background-size: 100% 100%, 100% 4px;
             overflow: hidden;
         }
-
         .sun {
-            width: 200px;
-            height: 200px;
+            width: 200px; height: 200px;
             background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQBAMAAABykSv/AAAAwHpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjabVDbEQMhCPynipQgDzksx8uZmXSQ8oOHZs4kO+MusooItNfzAbcOQgHJm2lRTQ4pUqh6YClQT8YkJ58oM8I1Dx+DXNmVwzANxZkfF6Zi9ShfCtl9GPtqFAkl+ypEIdw76vExOxqFmMLAUaDGt5IW265f2FtaYbGgk9ja9s9+8+kd2d9hosbIyZlZowHuKwNXD8SZWP1gT1bfB89OfCD/5jQBb/DnWR8OLtJzAAABhGlDQ1BJQ0MgcHJvZmlsZQAAeJx9kT1Iw0AcxV/TSkUqDnaQ4pChCoJdVEQ3qWIRLJS2QqsOJpd+QZOGJMXFUXAtOPixWHVwcdbVwVUQBD9A3AUnRRcp8X9JoUWMB8f9eHfvcfcOEJpVppqBOUDVLCOdiIu5/KoYfEUAEQBjmJWYqSczi1l4jq97+Ph6F+NZ3uf+HP1KwWSATySeY7phEW8QT29aOud94jArSwrxOfG4QRckfuS67PIb55LDAs8MG9n0PHGYWCx1sdzFrGyoxFPEUUXVKF/Iuaxw3uKsVuusfU/+wlBBW8lwneYwElhCEimIkFFHBVVYiNGqkWIiTftxD3/E8afIJZOrAkaOBdSgQnL84H/wu1uzODnhJoXiQM+LbX+MAMFdoNWw7e9j226dAP5n4Err+GtNYOaT9EZHix4BA9vAxXVHk/eAyx1g6EmXDMmR/DSFYhF4P6NvygODt0Dfmttbex+nD0CWulq+AQ4OgdESZa97vLu3u7d/z7T7+wH/0XLfmkTj2wAADXZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDQuNC4wLUV4aXYyIj4KIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgIHhtbG5zOkdJTVA9Imh0dHA6Ly93d3cuZ2ltcC5vcmcveG1wLyIKICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICB4bXBNTTpEb2N1bWVudElEPSJnaW1wOmRvY2lkOmdpbXA6NzA1ZGY1MTYtN2NjMC00YmUwLWIyOTMtOTdiZDA2Zjg5ZjFlIgogICB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOmUwMTJiODlmLWEwYTMtNDk5NS1iYzE4LTI5YjYyNmIzN2FjYSIKICAgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjIzMWNhYTViLTJmNWMtNDI3Ny04ZjdjLTUwMzFkM2E5MmE1NiIKICAgZGM6Rm9ybWF0PSJpbWFnZS9wbmciCiAgIEdJTVA6QVBJPSIyLjAiCiAgIEdJTVA6UGxhdGZvcm09IldpbmRvd3MiCiAgIEdJTVA6VGltZVN0YW1wPSIxNzQ1NjI4MTY0MjUxMzk1IgogICBHSU1QOlZlcnNpb249IjIuMTAuMzYiCiAgIHRpZmY6T3JpZW50YXRpb249IjEiCiAgIHhtcDpDcmVhdG9yVG9vbD0iR0lNUCAyLjEwIgogICB4bXA6TWV0YWRhdGFEYXRlPSIyMDI1OjA0OjI2VDAyOjQyOjQ0KzAyOjAwIgogICB4bXA6TW9kaWZ5RGF0ZT0iMjAyNTowNDoyNlQwMjo0Mjo0NCswMjowMCI+CiAgIDx4bXBNTTpIaXN0b3J5PgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaQogICAgICBzdEV2dDphY3Rpb249InNhdmVkIgogICAgICBzdEV2dDpjaGFuZ2VkPSIvIgogICAgICBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjljNWFjMGUxLTRiOGItNGZiMy1iOTYxLTJlZTE1ZTM5OGI0NiIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iR2ltcCAyLjEwIChXaW5kb3dzKSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyNS0wNC0yNlQwMjo0Mjo0NCIvPgogICAgPC9yZGY6U2VxPgogICA8L3htcE1NOkhpc3Rvcnk+CiAgPC9yZGY6RGVzY3JpcHRpb24+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9InciPz4cAoOvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH6QQaACosaghRGgAAABhQTFRFAAAA4gC67ndx7yiP/cCJ/wAA/+uV//3xuaLiDwAAAAF0Uk5TAEDm2GYAAAABYktHRAX4b+nHAAABbUlEQVR42u3XWwGDQAxFwbUQC7WABbTUQu1jgUdZkjBHwZ3PO8afipONbIGAgICAgICAgICApIfETYGAgICAgICAgICAgMwaPh0GAgICAgICAgICAlIGEkkCAQEBAQEBAQEBAXkPJJIGAgICAgICAgICAtIXEkUCAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQG5ComigYCAgICAgICAgICAgICAgICAgICAgICAnIVIkiRJ0uyWJoGAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgGSHSJIkSdJTfZoEAgICAgICAgICAgICAgICAgICAgICAgKyFyJJkiRJT7cWDQQEBAQEBAQEBASkPqQaqM3BAgEBAQEBAQEBAQGRJEmSpDR9kwYCAgICAgICAgIC0h+SDdTmYIGAgICAgICAgICASJIkSVLZfjcFAgICAgICAgICAgIyC9bmaIGAgICAgICAgICAHG0DfRE18DuuYNwAAAAASUVORK5CYII=) no-repeat center;
-            mix-blend-mode: screen;
-            background-size: contain;
-            margin-bottom: 30px;
+            mix-blend-mode: screen; background-size: contain; margin-bottom: 30px;
         }
-
         h1 {
             font-size: 24px;
             background: linear-gradient(180deg, #00FFF7, #009DFF, #5A00FF, #A200FF, #FF2D95);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 40px;
             text-align: center;
         }
-
         .url-bar {
-            width: 80%;
-            max-width: 800px;
-            margin-bottom: 30px;
-            display: flex;
-            gap: 10px;
+            width: 80%; max-width: 800px; margin-bottom: 30px; display: flex; gap: 10px;
+            position: relative;
         }
-
         .url-input {
             flex-grow: 1;
             background: #000000;
@@ -68,13 +42,11 @@
             color: #00FFF7;
             font-size: 12px;
         }
-
         .url-input:focus {
             outline: none;
             border-color: #FF2D95;
             box-shadow: 0 0 15px #FF2D95;
         }
-
         .search-button {
             background: #000000;
             border: 2px solid #5A00FF;
@@ -83,12 +55,51 @@
             font-size: 12px;
             cursor: pointer;
         }
-
         .search-button:hover {
             border-color: #FF2D95;
             box-shadow: 0 0 15px #FF2D95;
         }
-
+        .search-history-popup {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 110%;
+            background: #000;
+            border: 2px solid #5A00FF;
+            border-radius: 7px;
+            width: 100%;
+            max-height: 210px;
+            overflow-y: auto;
+            z-index: 30;
+            box-shadow: 0 3px 20px #5A00FF;
+            padding: 8px 0 8px 0;
+        }
+        .search-history-entry {
+            background: #000;
+            color: #FF2D95;
+            border: none;
+            padding: 6px 18px 6px 12px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border-radius: 2px;
+            margin: 1px 0;
+        }
+        .search-history-entry:hover {
+            background: #5A00FF;
+            color: #fff;
+        }
+        .search-history-delete {
+            color: #FF2D95;
+            font-weight: bold;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+        }
         .quick-links {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -96,7 +107,6 @@
             width: 90%;
             max-width: 1200px;
         }
-
         .quick-link {
             background: #000000;
             border: 2px solid #5A00FF;
@@ -110,39 +120,57 @@
             align-items: center;
             justify-content: center;
             font-size: 12px;
+            position: relative;
+            user-select: none;
         }
-
         .quick-link:hover {
             border-color: #FF2D95;
             box-shadow: 0 0 15px #FF2D95;
             transform: translateY(-2px);
         }
-
         .empty-link {
             border-style: dashed;
             color: #5A00FF;
             cursor: pointer;
         }
-
         .empty-link:hover {
             border-color: #FF2D95;
             box-shadow: 0 0 15px #FF2D95;
             color: #FF2D95;
         }
-
+        .custom-context-menu {
+            position: fixed;
+            background: #000;
+            color: #00FFF7;
+            border: 2px solid #FF2D95;
+            border-radius: 6px;
+            z-index: 9999;
+            box-shadow: 0 0 15px #5A00FF;
+            padding: 0;
+            min-width: 150px;
+            display: none;
+        }
+        .context-menu-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 13px;
+            border-bottom: 1px solid #5A00FF;
+        }
+        .context-menu-item:last-child {
+            border-bottom: none;
+        }
+        .context-menu-item:hover {
+            background: #5A00FF;
+            color: #fff;
+        }
         .edit-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
+            justify-content: center; align-items: center;
             z-index: 1000;
         }
-
         .edit-form {
             background: #000000;
             border: 2px solid #5A00FF;
@@ -152,7 +180,6 @@
             gap: 10px;
             min-width: 300px;
         }
-
         .edit-form input {
             background: #000000;
             border: 2px solid #5A00FF;
@@ -160,12 +187,10 @@
             color: #00FFF7;
             font-size: 12px;
         }
-
         .edit-form input:focus {
             outline: none;
             border-color: #FF2D95;
         }
-
         .edit-form button {
             background: #000000;
             border: 2px solid #5A00FF;
@@ -174,7 +199,6 @@
             font-size: 12px;
             cursor: pointer;
         }
-
         .edit-form button:hover {
             border-color: #FF2D95;
             box-shadow: 0 0 15px #FF2D95;
@@ -185,68 +209,110 @@
     <div class="sun"></div>
     <h1>RETROVISOR</h1>
     <div class="url-bar">
-        <input type="text" class="url-input" placeholder="Search or enter URL...">
+        <input type="text" class="url-input" placeholder="Search or enter URL..." autocomplete="off">
         <button class="search-button" onclick="search()">GO</button>
+        <div class="search-history-popup" id="searchHistoryPopup"></div>
     </div>
-    <div class="quick-links" id="quickLinksContainer">
-        <!-- Empty boxes will be generated here -->
-    </div>
+    <div class="quick-links" id="quickLinksContainer"></div>
     <div class="edit-overlay">
         <div class="edit-form">
             <input type="text" id="linkUrl" placeholder="Enter URL...">
             <input type="text" id="linkText" placeholder="Link name...">
             <button onclick="saveLink()">Save</button>
             <button onclick="closeEditForm()">Cancel</button>
+            <button id="deleteBoxBtn" style="display:none; background:#FF2D95; color:#000; border-color:#A200FF;">Clear Linkbox</button>
         </div>
     </div>
-
+    <div id="customContextMenu" class="custom-context-menu"></div>
     <script>
-        // Number of link boxes (6x10 grid)
+        // All boxes empty by default
+        const defaultLinks = [];
+
         const TOTAL_LINKS = 60;
         let currentEditIndex = null;
 
-        // Load links from localStorage or create empty array
-        function loadLinks() {
-            const savedLinks = localStorage.getItem('quickLinks');
-            let links = [];
-            
-            if (savedLinks) {
-                try {
-                    links = JSON.parse(savedLinks);
-                } catch (e) {
-                    console.error('Error parsing saved links', e);
+        // Search history functions
+        function loadSearchHistory() {
+            const s = localStorage.getItem('searchHistory_en');
+            return s ? JSON.parse(s) : [];
+        }
+        function saveSearchHistory(arr) {
+            localStorage.setItem('searchHistory_en', JSON.stringify(arr));
+        }
+        function addSearchHistory(term) {
+            let hist = loadSearchHistory();
+            hist = hist.filter(x => x !== term); // no duplicates
+            hist.unshift(term);
+            if (hist.length > 15) hist = hist.slice(0, 15);
+            saveSearchHistory(hist);
+        }
+        function renderSearchHistoryPopup(filter) {
+            const popup = document.getElementById('searchHistoryPopup');
+            const hist = loadSearchHistory();
+            let shown = hist;
+            if (filter) shown = shown.filter(x => x.toLowerCase().includes(filter.toLowerCase()));
+            if (!shown.length) {
+                popup.style.display = "none";
+                popup.innerHTML = "";
+                return;
+            }
+            popup.innerHTML = "";
+            shown.forEach((entry, idx) => {
+                const el = document.createElement('div');
+                el.className = 'search-history-entry';
+                el.innerHTML = `<span>${entry}</span><button class="search-history-delete" title="Remove" onclick="deleteSearchHistory(${idx});event.stopPropagation();">&times;</button>`;
+                el.onclick = function() {
+                    document.querySelector('.url-input').value = entry;
+                    document.querySelector('.url-input').focus();
+                    popup.style.display = "none";
                 }
+                popup.appendChild(el);
+            });
+            popup.style.display = "block";
+        }
+        function deleteSearchHistory(index) {
+            let hist = loadSearchHistory();
+            hist.splice(index, 1);
+            saveSearchHistory(hist);
+            renderSearchHistoryPopup(document.querySelector('.url-input').value);
+        }
+        // Hide popup when clicking outside
+        document.addEventListener('mousedown', function(e){
+            const popup = document.getElementById('searchHistoryPopup');
+            if (!popup.contains(e.target) && !document.querySelector('.url-input').contains(e.target)) {
+                popup.style.display = "none";
             }
-            
-            // Ensure we have exactly 60 links (add empty if needed)
-            while (links.length < TOTAL_LINKS) {
-                links.push({ url: "", text: "" });
+        });
+
+        // Links persistence
+        function loadLinks() {
+            const savedLinks = localStorage.getItem('quickLinks_en');
+            let links = defaultLinks.slice();
+            if (savedLinks) {
+                try { links = JSON.parse(savedLinks); } catch (e) { console.error('Error parsing saved links', e); }
             }
-            
+            while (links.length < TOTAL_LINKS) { links.push({ url: "", text: "" }); }
             return links.slice(0, TOTAL_LINKS);
         }
-
-        // Save links to localStorage
         function saveLinks(links) {
-            localStorage.setItem('quickLinks', JSON.stringify(links));
+            localStorage.setItem('quickLinks_en', JSON.stringify(links));
         }
-
-        // Render empty link boxes
         function renderLinks() {
             const container = document.getElementById('quickLinksContainer');
             container.innerHTML = '';
-            
             const links = loadLinks();
-            
             links.forEach((link, index) => {
                 if (link.url && link.text) {
-                    // If link exists (added by user)
                     const linkElement = document.createElement('a');
                     linkElement.href = link.url.startsWith('http') ? link.url : 'https://' + link.url;
                     linkElement.className = 'quick-link';
                     linkElement.textContent = link.text;
                     linkElement.target = "_blank";
                     linkElement.rel = "noopener noreferrer";
+                    linkElement.oncontextmenu = function(e) {
+                        e.preventDefault();
+                        showCustomContextMenu(e, index);
+                    };
                     linkElement.onclick = function(e) {
                         if (e.ctrlKey || e.metaKey) {
                             e.preventDefault();
@@ -255,7 +321,6 @@
                     };
                     container.appendChild(linkElement);
                 } else {
-                    // Empty link box
                     const emptyLink = document.createElement('div');
                     emptyLink.className = 'quick-link empty-link';
                     emptyLink.textContent = '+';
@@ -266,12 +331,58 @@
                 }
             });
         }
+        function deleteLinkBox(index) {
+            const links = loadLinks();
+            links[index] = { url: "", text: "" };
+            saveLinks(links);
+            renderLinks();
+        }
 
-        // Search function (opens in new tab)
+        // Custom context menu
+        function showCustomContextMenu(event, linkIndex) {
+            const menu = document.getElementById('customContextMenu');
+            menu.innerHTML = '';
+            const delItem = document.createElement('div');
+            delItem.className = 'context-menu-item';
+            delItem.textContent = 'Delete link';
+            delItem.onclick = function(e) {
+                deleteLinkBox(linkIndex);
+                hideCustomContextMenu();
+            };
+            menu.appendChild(delItem);
+
+            menu.style.display = 'block';
+            let x = event.clientX, y = event.clientY;
+            setTimeout(() => {
+                if (x + menu.offsetWidth > window.innerWidth) x = window.innerWidth - menu.offsetWidth - 5;
+                if (y + menu.offsetHeight > window.innerHeight) y = window.innerHeight - menu.offsetHeight - 5;
+                menu.style.left = x + 'px';
+                menu.style.top = y + 'px';
+            }, 0);
+
+            document.addEventListener('mousedown', onBodyClickMenu, {capture:true});
+        }
+        function hideCustomContextMenu() {
+            const menu = document.getElementById('customContextMenu');
+            menu.style.display = 'none';
+            menu.innerHTML = '';
+            document.removeEventListener('mousedown', onBodyClickMenu, {capture:true});
+        }
+        function onBodyClickMenu(e) {
+            if (!e.target.closest('.custom-context-menu')) {
+                hideCustomContextMenu();
+            }
+        }
+
+        // Search
         function search() {
             const input = document.querySelector('.url-input');
             const query = input.value.trim();
-            
+            if (!query) return;
+            addSearchHistory(query);
+            if (document.activeElement === input) {
+                renderSearchHistoryPopup(query);
+            }
             if (query.startsWith('http://') || query.startsWith('https://')) {
                 window.open(query, '_blank');
             } else {
@@ -279,38 +390,52 @@
             }
         }
 
-        // Handle Enter key in search field
-        document.querySelector('.url-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                search();
-            }
+        // Show popup when input focused or typed
+        const urlInput = document.querySelector('.url-input');
+        urlInput.addEventListener('focus', function() {
+            renderSearchHistoryPopup(urlInput.value);
+        });
+        urlInput.addEventListener('input', function() {
+            renderSearchHistoryPopup(urlInput.value);
+        });
+        urlInput.addEventListener('blur', function() {
+            setTimeout(() => document.getElementById('searchHistoryPopup').style.display="none", 100);
+        });
+        urlInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') search();
         });
 
-        // Show edit form
+        // Edit overlay
         function showEditForm(index) {
+            hideCustomContextMenu();
             currentEditIndex = index;
             const links = loadLinks();
             const link = links[index];
-            
             document.getElementById('linkUrl').value = link.url || '';
             document.getElementById('linkText').value = link.text || '';
             document.querySelector('.edit-overlay').style.display = 'flex';
+            const delBtn = document.getElementById('deleteBoxBtn');
+            if (link.url || link.text) {
+                delBtn.style.display = '';
+                delBtn.onclick = function() {
+                    deleteLinkBox(index);
+                    closeEditForm();
+                }
+            } else {
+                delBtn.style.display = 'none';
+                delBtn.onclick = null;
+            }
         }
-
-        // Close edit form
         function closeEditForm() {
             document.querySelector('.edit-overlay').style.display = 'none';
             document.getElementById('linkUrl').value = '';
             document.getElementById('linkText').value = '';
             currentEditIndex = null;
         }
-
-        // Save link
         function saveLink() {
             const url = document.getElementById('linkUrl').value.trim();
             const text = document.getElementById('linkText').value.trim();
-            
-            if (currentEditIndex !== null) {
+            if (currentEditIndex !== null && (url || text)) {
                 const links = loadLinks();
                 links[currentEditIndex] = { url, text };
                 saveLinks(links);
@@ -318,11 +443,15 @@
                 closeEditForm();
             }
         }
-
-        // Initialize on page load
+        // Startup
         document.addEventListener('DOMContentLoaded', function() {
             renderLinks();
         });
+        document.addEventListener('keydown', function(e){
+            if(e.key==="Escape") hideCustomContextMenu();
+        });
+        window.addEventListener('scroll', hideCustomContextMenu);
+        window.addEventListener('resize', hideCustomContextMenu);
     </script>
 </body>
 </html>
